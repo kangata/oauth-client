@@ -23,15 +23,22 @@ class OAuthClientServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPublishing();
-        $this->setupPassport();
+
+        if (! $this->app->runningInConsole()) {
+            $this->setupPassport();
+        }
     }
 
     public function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/client.php',
+                __DIR__.'/../config/client.php' => config_path('client.php'),
             ], 'client-config');
+
+            $this->publishes([
+                __DIR__.'/../config/permission.php' => config_path('permission.php'),
+            ], 'client-permission-config');
         }
     }
 

@@ -15,6 +15,7 @@ class OAuthClientServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/client.php', 'client');
+        $this->mergeConfigFrom(__DIR__.'/../config/permission.php', 'permission');
     }
 
     /**

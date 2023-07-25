@@ -45,6 +45,7 @@ class OAuthClientServiceProvider extends ServiceProvider
     protected function setupPassport()
     {
         Passport::ignoreMigrations();
+        Passport::ignoreRoutes();
         Passport::tokensCan($this->getScopes());
         Passport::useClientModel(Client::class);
         Passport::useTokenModel(Token::class);

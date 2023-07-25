@@ -24,9 +24,7 @@ class OAuthClientServiceProvider extends ServiceProvider
     {
         $this->registerPublishing();
 
-        if (! $this->app->runningInConsole()) {
-            $this->setupPassport();
-        }
+        $this->setupPassport();
     }
 
     public function registerPublishing()
@@ -46,9 +44,12 @@ class OAuthClientServiceProvider extends ServiceProvider
     {
         Passport::ignoreMigrations();
         Passport::ignoreRoutes();
-        Passport::tokensCan($this->getScopes());
         Passport::useClientModel(Client::class);
         Passport::useTokenModel(Token::class);
+
+        if (! $this->app->runningInConsole()) {
+            Passport::tokensCan($this->getScopes());
+        }
     }
 
     protected function getScopes(): array

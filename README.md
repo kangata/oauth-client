@@ -1,5 +1,5 @@
 ```
-composer require quetzal-studio/oauth-client:dev-master --with-dependencies
+composer require quetzal-studio/oauth-client:dev-main
 ```
 
 ```

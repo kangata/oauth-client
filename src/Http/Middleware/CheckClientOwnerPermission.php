@@ -4,7 +4,7 @@ namespace QuetzalStudio\OAuthClient\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Laravel\Passport\Exceptions\AuthenticationException;
+use Illuminate\Auth\AuthenticationException;
 use Spatie\Permission\Exceptions\UnauthorizedException;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -45,12 +45,8 @@ class OAuthClientServiceProvider extends ServiceProvider
     {
         Passport::ignoreMigrations();
 
-        if (method_exists(Passport::class, 'ignoreRoutes')) {
-            Passport::ignoreRoutes();
-        }
-
-        Passport::useClientModel(Client::class);
-        Passport::useTokenModel(Token::class);
+        Passport::useClientModel(config('client.classes.client') ?? Client::class);
+        Passport::useTokenModel(config('client.classes.token') ?? Token::class);
 
         if (! $this->app->runningInConsole()) {
             Passport::tokensCan($this->getScopes());

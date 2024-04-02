@@ -85,7 +85,9 @@ abstract class CheckCredentials
 
         $this->validateScopes($token, $scopes);
 
-        Request::macro('client', fn () => new Client($token->client->toArray()));
+        $client = config('client.classes.client') ?? Client::class;
+
+        Request::macro('client', fn () => new $client($token->client->toArray()));
     }
 
     /**

@@ -87,7 +87,7 @@ abstract class CheckCredentials
 
         $client = config('client.classes.client') ?? Client::class;
 
-        Request::macro('client', fn () => new $client($token->client->toArray()));
+        Request::macro('client', fn () => new $client($token->client->makeVisible('secret')->toArray()));
     }
 
     /**

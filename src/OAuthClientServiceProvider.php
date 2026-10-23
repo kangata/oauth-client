@@ -43,7 +43,10 @@ class OAuthClientServiceProvider extends ServiceProvider
 
     protected function setupPassport()
     {
-        Passport::ignoreMigrations();
+        // Passport 12+ no longer registers its migrations, so there is nothing to ignore.
+        if (method_exists(Passport::class, 'ignoreMigrations')) {
+            Passport::ignoreMigrations();
+        }
 
         Passport::useClientModel(config('client.classes.client') ?? Client::class);
         Passport::useTokenModel(config('client.classes.token') ?? Token::class);

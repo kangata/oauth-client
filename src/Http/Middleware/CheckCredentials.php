@@ -4,7 +4,7 @@ namespace QuetzalStudio\OAuthClient\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Laravel\Passport\Exceptions\AuthenticationException;
+use QuetzalStudio\OAuthClient\Exceptions\AuthenticationException;
 use Laravel\Passport\TokenRepository;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\ResourceServer;
@@ -46,7 +46,7 @@ abstract class CheckCredentials
      * @param  mixed  ...$scopes
      * @return mixed
      *
-     * @throws \Laravel\Passport\Exceptions\AuthenticationException
+     * @throws \QuetzalStudio\OAuthClient\Exceptions\AuthenticationException
      */
     public function handle($request, Closure $next, ...$scopes)
     {
@@ -75,7 +75,7 @@ abstract class CheckCredentials
      * @param  array  $scopes
      * @return void
      *
-     * @throws \Laravel\Passport\Exceptions\MissingScopeException|\Illuminate\Auth\AuthenticationException
+     * @throws \Laravel\Passport\Exceptions\MissingScopeException|\QuetzalStudio\OAuthClient\Exceptions\AuthenticationException
      */
     protected function validate($psr, $scopes)
     {
@@ -96,7 +96,7 @@ abstract class CheckCredentials
      * @param  \Laravel\Passport\Token  $token
      * @return void
      *
-     * @throws \Laravel\Passport\Exceptions\AuthenticationException
+     * @throws \QuetzalStudio\OAuthClient\Exceptions\AuthenticationException
      */
     abstract protected function validateCredentials($token);
 

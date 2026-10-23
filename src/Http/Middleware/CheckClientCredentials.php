@@ -2,7 +2,7 @@
 
 namespace QuetzalStudio\OAuthClient\Http\Middleware;
 
-use Laravel\Passport\Exceptions\AuthenticationException;
+use QuetzalStudio\OAuthClient\Exceptions\AuthenticationException;
 use Laravel\Passport\Exceptions\MissingScopeException;
 
 class CheckClientCredentials extends CheckCredentials
@@ -13,7 +13,7 @@ class CheckClientCredentials extends CheckCredentials
      * @param  \Laravel\Passport\Token  $token
      * @return void
      *
-     * @throws \Laravel\Passport\Exceptions\AuthenticationException
+     * @throws \QuetzalStudio\OAuthClient\Exceptions\AuthenticationException
      */
     protected function validateCredentials($token)
     {
